@@ -1,7 +1,6 @@
 
 import unittest, slapd
 import _ldap
-import logging
 
 reusable_server = None
 def get_reusable_server():
@@ -215,7 +214,7 @@ class TestLdapCExtension(unittest.TestCase):
         got_timeout = False
         try:
             r = l.result3(m, _ldap.MSG_ALL, 0.3)  # (timeout /could/ be longer)
-        except _ldap.TIMEOUT, e:
+        except _ldap.TIMEOUT:
             got_timeout = True
         self.assertTrue(got_timeout)
 

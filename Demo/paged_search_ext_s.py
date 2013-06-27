@@ -6,7 +6,7 @@ searchreq_attrlist=['cn','entryDN','entryUUID','mail','objectClass']
 
 from ldap.ldapobject import ReconnectLDAPObject
 
-import ldap,pprint
+import ldap
 from ldap.controls import SimplePagedResultsControl
 
 

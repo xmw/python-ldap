@@ -17,7 +17,7 @@ try:
   from configparser import ConfigParser
 except ImportError:
   from ConfigParser import ConfigParser
-import sys,os,string,time
+import sys,os
 try:
   from functools import reduce
 except ImportError:

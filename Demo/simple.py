@@ -1,4 +1,4 @@
-import sys,getpass
+import getpass
 import ldap
 
 #l = ldap.open("localhost", 31001)

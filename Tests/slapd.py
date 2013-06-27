@@ -4,7 +4,7 @@ Utilities for starting up a test slapd server
 and talking to it with ldapsearch/ldapadd.
 """
 
-import sys, os, socket, time, subprocess, logging
+import sys, os, socket, time, subprocess, logging, base64
 
 _log = logging.getLogger("slapd")
 
@@ -154,7 +154,7 @@ class Slapd:
             self._log.debug("deleting existing %s", path)
             os.remove(path)
         self._log.debug("writing config to %s", path)
-        file(path, "w").writelines([line + "\n" for line in self._config])
+        open(path, "w").writelines([line + "\n" for line in self._config])
         return path
 
     def start(self):

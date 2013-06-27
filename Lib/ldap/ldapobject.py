@@ -790,7 +790,7 @@ class ReconnectLDAPObject(SimpleLDAPObject):
           self.start_tls_s()
         # Repeat last simple or SASL bind
         self._apply_last_bind()
-      except (ldap.SERVER_DOWN,ldap.TIMEOUT) as e:
+      except (ldap.SERVER_DOWN,ldap.TIMEOUT):
         if __debug__ and self._trace_level>=1:
           self._trace_file.write('*** %d. reconnect to %s failed\n' % (
             self._retry_max-reconnect_counter+1,uri

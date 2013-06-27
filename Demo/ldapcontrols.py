@@ -1,4 +1,4 @@
-import ldap,ldapurl,pprint
+import ldap,pprint
 
 from ldap.controls import LDAPControl,BooleanControl
 

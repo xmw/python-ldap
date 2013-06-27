@@ -5,7 +5,6 @@
 #
 
 import ldap
-import string
 from traceback import print_exc
 
 url = "ldap://ldap.openldap.org/"

@@ -45,7 +45,7 @@ class DeleteLeafs(ldap.async.AsyncSearchHandler):
       else:
         try:
           self._l.delete_s(dn)
-        except ldap.NOT_ALLOWED_ON_NONLEAF,e:
+        except ldap.NOT_ALLOWED_ON_NONLEAF:
           self.nonLeafEntries.append(dn)
         else:
           self.deletedEntries = self.deletedEntries+1
@@ -62,7 +62,7 @@ def DelTree(l,dn,scope=ldap.SCOPE_ONELEVEL):
   non_leaf_entries = leafs_deleter.nonLeafEntries[:]
   while non_leaf_entries:
     dn = non_leaf_entries.pop()
-    print deleted_entries,len(non_leaf_entries),dn
+    print(deleted_entries,len(non_leaf_entries),dn)
     leafs_deleter.startSearch(dn,ldap.SCOPE_SUBTREE)
     leafs_deleter.processResults()
     deleted_entries = deleted_entries+leafs_deleter.deletedEntries

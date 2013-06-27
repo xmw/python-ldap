@@ -23,7 +23,7 @@ __all__ = [
   'LDIFCopy',
 ]
 
-import urllib.request, urllib.parse, urllib.error,base64,re,types
+import urllib.request, urllib.parse, urllib.error,base64,re
 import urllib.parse as urlparse
 from io import StringIO
 

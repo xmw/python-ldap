@@ -16,8 +16,8 @@ from ldap.controls.sessiontrack import SessionTrackingControl,SESSION_TRACKING_F
 
 try:
   ldap_url = ldapurl.LDAPUrl(sys.argv[1])
-except IndexError,ValueError:
-  print 'Usage: %s <LDAP URL>' % (sys.argv[0])
+except (IndexError,ValueError):
+  print('Usage: %s <LDAP URL>' % sys.argv[0])
   sys.exit(1)
 
 # Set debugging level
@@ -32,14 +32,14 @@ ldap_conn = ldap.ldapobject.LDAPObject(
 )
 
 if ldap_url.who and ldap_url.cred is None:
-  print 'Password for %s:' % (repr(ldap_url.who))
+  print('Password for %s:' % repr(ldap_url.who))
   ldap_url.cred = getpass.getpass()
 
 try:
   ldap_conn.simple_bind_s(ldap_url.who or '',ldap_url.cred or '')
 
-except ldap.INVALID_CREDENTIALS,e:
-  print 'Simple bind failed:',str(e)
+except ldap.INVALID_CREDENTIALS as e:
+  print('Simple bind failed:',str(e))
   sys.exit(1)
 
 st_ctrl = SessionTrackingControl(
