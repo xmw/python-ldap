@@ -6,7 +6,11 @@ See http://www.python-ldap.org/ for details.
 \$Id: models.py,v 1.45 2012/03/07 19:07:15 stroeder Exp $
 """
 
-from collections import UserDict
+try:
+  from collections import UserDict
+except ImportError:
+  from UserDict import UserDict
+
 import ldap.cidict
 
 from ldap.schema.tokenizer import split_tokens,extract_tokens

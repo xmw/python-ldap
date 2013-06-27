@@ -10,7 +10,10 @@ $Id: cidict.py,v 1.13 2009/04/17 14:34:34 stroeder Exp $
 
 __version__ = """$Revision: 1.13 $"""
 
-from collections import UserDict
+try:
+  from collections import UserDict
+except ImportError:
+  from UserDict import UserDict
 
 class cidict(UserDict):
   """

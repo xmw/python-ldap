@@ -28,7 +28,10 @@ try:
 except ImportError:
   from UserDict import UserDict
 
-from urllib.parse import quote,unquote
+try:
+  from urllib.parse import quote,unquote
+except ImportError:
+  from urllib import quote,unquote
 
 LDAP_SCOPE_BASE = 0
 LDAP_SCOPE_ONELEVEL = 1
