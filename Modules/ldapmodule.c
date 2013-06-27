@@ -11,7 +11,12 @@
 
 #include "LDAPObject.h"
 
-PyMODINIT_FUNC PyInit__ldap(void);
+PyMODINIT_FUNC
+#if PY_MAJOR_VERSION >= 3
+PyInit__ldap(void);
+#else
+init_ldap(void);
+#endif
 
 /* dummy module methods */
 
@@ -19,6 +24,7 @@ static PyMethodDef methods[]  = {
 	{ NULL, NULL }
 };
 
+#if PY_MAJOR_VERSION >= 3
 static struct PyModuleDef moduleDef = {
     PyModuleDef_HEAD_INIT,
     "_ldap",
@@ -26,11 +32,16 @@ static struct PyModuleDef moduleDef = {
     -1,
     methods,
 };
+#endif
 
 /* module initialisation */
 
 PyMODINIT_FUNC
+#if PY_MAJOR_VERSION >= 3
 PyInit__ldap(void)
+#else
+init_ldap(void)
+#endif
 {
 	PyObject *m, *d;
 
@@ -39,7 +50,11 @@ PyInit__ldap(void)
 #endif
 
 	/* Create the module and add the functions */
+	#if PY_MAJOR_VERSION >= 3
 	m = PyModule_Create(&moduleDef);
+    #else
+    m = Py_InitModule("_ldap", methods);
+    #endif
 
 	/* Add some symbolic constants to the module */
 	d = PyModule_GetDict(m);
@@ -54,6 +69,7 @@ PyInit__ldap(void)
 	/* Check for errors */
 	if (PyErr_Occurred())
 		Py_FatalError("can't initialize module _ldap");
-    return m;
+    #if PY_MAJOR_VERSION >= 3
+	return m;
+	#endif
 }
-
