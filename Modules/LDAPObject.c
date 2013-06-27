@@ -1357,6 +1357,11 @@ setattr(LDAPObject* self, char* name, PyObject* value)
 
 /* type entry */
 
+#ifndef PyVarObject_HEAD_INIT
+    #define PyVarObject_HEAD_INIT(type, size) \
+        PyObject_HEAD_INIT(type) size,
+#endif
+
 PyTypeObject LDAP_Type = {
       PyVarObject_HEAD_INIT(&PyType_Type, 0)
       "LDAP",          /* Name of this type */

@@ -13,9 +13,15 @@ try:
 except ImportError:
         from distutils.core import setup, Extension
 
-from configparser import ConfigParser
+try:
+  from configparser import ConfigParser
+except ImportError:
+  from ConfigParser import ConfigParser
 import sys,os,string,time
-from functools import reduce
+try:
+  from functools import reduce
+except ImportError:
+  pass
 
 ##################################################################
 # Weird Hack to grab release version of python-ldap from local dir
