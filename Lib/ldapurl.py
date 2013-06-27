@@ -23,7 +23,10 @@ __all__ = [
   'LDAPUrlExtension','LDAPUrlExtensions','LDAPUrl'
 ]
 
-from collections import UserDict
+try:
+  from collections import UserDict
+except ImportError:
+  from UserDict import UserDict
 
 from urllib.parse import quote,unquote
 
