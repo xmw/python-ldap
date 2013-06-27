@@ -11,7 +11,7 @@
 # All configuration values have a default value; values that are commented out
 # serve to show the default value.
 #
-# $Id: conf.py,v 1.17 2011/10/14 11:48:31 stroeder Exp $
+# $Id: conf.py,v 1.18 2012/08/09 07:19:12 stroeder Exp $
 
 import sys
 

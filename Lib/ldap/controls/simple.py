@@ -4,7 +4,7 @@ ldap.controls.simple - classes for some very simple LDAP controls
 
 See http://www.python-ldap.org/ for details.
 
-$Id: simple.py,v 1.8 2012/02/21 16:50:36 stroeder Exp $
+$Id: simple.py,v 1.9 2012/08/09 07:01:20 stroeder Exp $
 """
 
 import struct,ldap
@@ -113,11 +113,6 @@ class ProxyAuthzControl(RequestControl):
 class AuthorizationIdentityRequestControl(ValueLessRequestControl):
   """
   Authorization Identity Request and Response Controls
-  
-  Class attributes:
-  
-  authzId
-    decoded authorization identity
   """
   controlType = '2.16.840.1.113730.3.4.16'
 

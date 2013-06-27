@@ -3,7 +3,7 @@ ldapobject.py - wraps class _ldap.LDAPObject
 
 See http://www.python-ldap.org/ for details.
 
-\$Id: ldapobject.py,v 1.132 2012/03/13 19:23:03 stroeder Exp $
+\$Id: ldapobject.py,v 1.133 2012/06/02 10:23:15 stroeder Exp $
 
 Compability:
 - Tested with Python 2.0+ but should work with Python 1.5.x
@@ -731,7 +731,7 @@ class ReconnectLDAPObject(SimpleLDAPObject):
         Time span to wait between two reconnect trials
     """
     self._uri = uri
-    self._options = {}
+    self._options = []
     self._last_bind = None
     self._pending_reconnect = 0
     SimpleLDAPObject.__init__(self,uri,trace_level,trace_file,trace_stack_limit)
@@ -762,7 +762,7 @@ class ReconnectLDAPObject(SimpleLDAPObject):
 
   def _restore_options(self):
     """Restore all recorded options"""
-    for k,v in self._options.items():
+    for k,v in self._options:
       SimpleLDAPObject.set_option(self,k,v)
 
   def reconnect(self,uri):
@@ -824,7 +824,7 @@ class ReconnectLDAPObject(SimpleLDAPObject):
       return func(self,*args,**kwargs)
 
   def set_option(self,option,invalue):
-    self._options[option] = invalue
+    self._options.append((option,invalue))
     return SimpleLDAPObject.set_option(self,option,invalue)
 
   def bind_s(self,*args,**kwargs):

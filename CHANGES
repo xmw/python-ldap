@@ -1,4 +1,39 @@
 ----------------------------------------------------------------
+Released 2.4.12 2013-06-01
+
+Changes since 2.4.11:
+
+Lib/
+* Truly optional import of PyAsn1Error exception which should
+  not fail anymore if pyasn1 is not installed
+
+----------------------------------------------------------------
+Released 2.4.11 2013-05-27
+
+Changes since 2.4.10:
+
+Lib/
+* ldap.controls.DecodeControlTuples() now simply ignores
+  PyAsn1Error exception raised during decoding malformed
+  response control values in case of non-critical controls.
+* ldif.LDIFWriter.unparse() does not simply skip empty
+  records anymore.
+
+----------------------------------------------------------------
+Released 2.4.10 2012-06-07
+
+Changes since 2.4.9:
+
+Lib/
+* ldapobject.ReconnectLDAPObject.reconnect() now preserves
+  order of options set with LDAPObject.set_option before.
+  This is needed e.g. for setting connection-specific TLS options.
+
+Demo/
+* Better version of Demo/pyasn1/syncrepl.py
+  (thanks to Ben Cooksley)
+
+----------------------------------------------------------------
 Released 2.4.9 2012-03-14
 
 Changes since 2.4.8:

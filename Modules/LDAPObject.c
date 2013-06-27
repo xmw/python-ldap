@@ -1073,10 +1073,12 @@ l_ldap_search_ext( LDAPObject* self, PyObject* args )
 
     int msgid;
     int ldaperror;
+
     if (!PyArg_ParseTuple( args, "sis|OiOOdi",
                            &base, &scope, &filter, &attrlist, &attrsonly,
                            &serverctrls, &clientctrls, &timeout, &sizelimit )) return NULL;
     if (not_valid(self)) return NULL;
+
     if (!attrs_from_List( attrlist, &attrs )) 
          return NULL;
 

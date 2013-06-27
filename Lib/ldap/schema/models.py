@@ -127,8 +127,8 @@ class ObjectClass(SchemaElement):
     an entry of the object class may have
   kind
     Kind of an object class:
-    0 = ABSTRACT,
-    1 = STRUCTURAL,
+    0 = STRUCTURAL,
+    1 = ABSTRACT,
     2 = AUXILIARY
   sup
     This list of strings contains NAMEs or OIDs of object classes

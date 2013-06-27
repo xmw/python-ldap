@@ -1,4 +1,4 @@
-.. % $Id: ldap-controls.rst,v 1.10 2011/07/23 08:15:38 stroeder Exp $
+.. % $Id: ldap-controls.rst,v 1.11 2012/08/09 07:19:30 stroeder Exp $
 
 
 *********************************************************************
@@ -100,7 +100,14 @@ RFC or Internet-Draft is very helpful to understand the API.
 
       :rfc:`4370` - Lightweight Directory Access Protocol (LDAP): Proxied Authorization Control
 
-.. autoclass:: ldap.controls.simple.AuthorizationIdentityControl
+.. autoclass:: ldap.controls.simple.AuthorizationIdentityRequestControl
+   :members:
+
+   .. seealso::
+
+      :rfc:`3829` - Lightweight Directory Access Protocol (LDAP): Authorization Identity Request and Response Controls
+
+.. autoclass:: ldap.controls.simple.AuthorizationIdentityResponseControl
    :members:
 
    .. seealso::

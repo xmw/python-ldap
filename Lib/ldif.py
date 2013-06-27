@@ -3,13 +3,13 @@ ldif - generate and parse LDIF data (see RFC 2849)
 
 See http://www.python-ldap.org/ for details.
 
-$Id: ldif.py,v 1.66 2012/03/03 17:45:57 stroeder Exp $
+$Id: ldif.py,v 1.71 2013/05/29 19:58:25 stroeder Exp $
 
 Python compability note:
 Tested with Python 2.0+, but should work with Python 1.5.2+.
 """
 
-__version__ = '2.4.9'
+__version__ = '2.4.12'
 
 __all__ = [
   # constants
@@ -186,9 +186,6 @@ class LDIFWriter:
           Either a dictionary holding the LDAP entry {attrtype:record}
           or a list with a modify list like for LDAPObject.modify().
     """
-    if not record:
-      # Simply ignore empty records
-      return
     # Start with line containing the distinguished name
     self._unparseAttrTypeandValue('dn',dn)
     # Dispatch to record type specific writers
@@ -235,6 +232,7 @@ class LDIFParser:
   class and override method handle() to implement something meaningful.
 
   Public class attributes:
+
   records_read
         Counter for records processed so far
   """
